@@ -3,10 +3,6 @@ import type { Anchor } from '../types'
 
 defineProps<{ anchors: Anchor[] }>()
 defineEmits<{ (e: 'select', id: string): void }>()
-
-function fmt(n: number) {
-  return n >= 10000 ? (n / 10000).toFixed(1) + 'w' : n.toLocaleString()
-}
 </script>
 
 <template>
