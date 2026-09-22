@@ -66,3 +66,20 @@ export interface CategoryStat {
   name: string
   value: number
 }
+
+/** 录播视频 */
+export interface RecordedVideo {
+  id: string
+  anchorId: string
+  anchorName: string
+  avatarColor: string
+  platform: string
+  roomTitle: string
+  date: string
+  startTime: string
+  duration: string
+  fileSize: string
+  violationCount: number
+  status: 'ready' | 'recording'
+  videoUrl: string
+}

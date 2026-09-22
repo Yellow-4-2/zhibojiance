@@ -1,8 +1,27 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue'
 import type { Anchor } from '../types'
 
-defineProps<{ anchors: Anchor[] }>()
+const props = defineProps<{ anchors: Anchor[] }>()
 defineEmits<{ (e: 'select', id: string): void }>()
+
+const activePlatform = ref<string>('all')
+
+const platforms = computed(() => {
+  const counts = new Map<string, number>()
+  for (const a of props.anchors) {
+    counts.set(a.platform, (counts.get(a.platform) ?? 0) + 1)
+  }
+  return [{ name: 'all', label: '全部', count: props.anchors.length }].concat(
+    [...counts.entries()].map(([name, count]) => ({ name, label: name, count }))
+  )
+})
+
+const filtered = computed(() =>
+  activePlatform.value === 'all'
+    ? props.anchors
+    : props.anchors.filter(a => a.platform === activePlatform.value)
+)
 
 function fmt(n: number) {
   return n >= 10000 ? (n / 10000).toFixed(1) + 'w' : n.toLocaleString()
@@ -16,11 +35,25 @@ function fmt(n: number) {
         <span class="card__live-dot"></span>
         在播主播
       </h2>
-      <span class="card__sub">{{ anchors.length }} 位主播正在直播</span>
+      <span class="card__sub">{{ filtered.length }} 位主播正在直播</span>
     </div>
+
+    <div class="platforms">
+      <button
+        v-for="p in platforms"
+        :key="p.name"
+        class="platforms__btn"
+        :class="{ active: activePlatform === p.name }"
+        @click="activePlatform = p.name"
+      >
+        {{ p.label }}
+        <span class="platforms__count">{{ p.count }}</span>
+      </button>
+    </div>
+
     <ul class="list">
       <li
-        v-for="a in anchors"
+        v-for="a in filtered"
         :key="a.id"
         class="row"
         @click="$emit('select', a.id)"
@@ -45,7 +78,7 @@ function fmt(n: number) {
         </div>
         <div class="row__action">进入 →</div>
       </li>
-      <li v-if="!anchors.length" class="empty">当前无在播主播</li>
+      <li v-if="!filtered.length" class="empty">该平台当前无在播主播</li>
     </ul>
   </div>
 </template>
@@ -81,6 +114,36 @@ function fmt(n: number) {
 }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
 .card__sub { font-size: 12px; color: #8b98a8; }
+.platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.platforms__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  border: 1px solid #2a3a55;
+  background: transparent;
+  color: #9fb2c8;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.platforms__btn:hover { border-color: #3f5a85; color: #c9d4e3; }
+.platforms__btn.active {
+  background: rgba(47, 129, 247, 0.18);
+  border-color: #2f81f7;
+  color: #9ec5ff;
+}
+.platforms__count {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
 .list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
 .row {
   display: flex;

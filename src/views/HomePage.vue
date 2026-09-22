@@ -41,6 +41,16 @@ function goMonitor(anchorId: string) {
         <p class="home__hero-sub">
           实时追踪主播开播状态 · AI 识别违规话术 · 溯源违规商品链接
         </p>
+        <div class="home__hero-actions">
+          <router-link class="home__hero-link" to="/recordings">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="5" width="20" height="15" rx="2" />
+              <path d="M10 9l5 3.5-5 3.5V9z" fill="currentColor" stroke="none" />
+              <path d="M7 3v3M17 3v3" />
+            </svg>
+            每日录播回放
+          </router-link>
+        </div>
       </div>
       <div class="home__hero-meta">
         <p class="home__hero-date">2026-09-22 周二</p>
@@ -172,6 +182,27 @@ function goMonitor(anchorId: string) {
   margin: 0;
   font-size: 13px;
   color: #8b98a8;
+}
+.home__hero-actions {
+  margin-top: 10px;
+}
+.home__hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(56, 139, 253, 0.45);
+  background: rgba(47, 129, 247, 0.12);
+  color: #9ec5ff;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all .2s;
+}
+.home__hero-link:hover {
+  background: rgba(47, 129, 247, 0.24);
+  border-color: #2f81f7;
 }
 .home__hero-meta { text-align: right; }
 .home__hero-date { margin: 0; font-size: 13px; color: #c9d4e3; }

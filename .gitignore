@@ -27,3 +27,5 @@ pnpm-debug.log*
 
 # TypeScript cache
 *.tsbuildinfo
+vite.config.js
+vite.config.d.ts

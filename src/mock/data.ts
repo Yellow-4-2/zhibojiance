@@ -3,6 +3,7 @@ import type {
   CategoryStat,
   KeyProduct,
   ProductItem,
+  RecordedVideo,
   TrendPoint,
   ViolationRecord
 } from '../types'
@@ -219,6 +220,130 @@ export const anchorRanking = [
   { name: '小鹿爱吃肉', count: 4 },
   { name: '老王食品铺', count: 3 },
   { name: '阿杰说数码', count: 2 }
+]
+
+/** 首页 - 每日录播视频（演示视频源为公开示例 MP4） */
+export const recordedVideos: RecordedVideo[] = [
+  {
+    id: 'R2026092201',
+    anchorId: 'A001',
+    anchorName: '小鹿爱吃肉',
+    avatarColor: 'linear-gradient(135deg,#2f81f7,#8957e5)',
+    platform: '抖音',
+    roomTitle: '秋日美妆专场 · 限时秒杀',
+    date: '2026-09-22',
+    startTime: '20:00',
+    duration: '录制中 01:23:45',
+    fileSize: '约 1.2 GB',
+    violationCount: 4,
+    status: 'recording',
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
+  },
+  {
+    id: 'R2026092202',
+    anchorId: 'A003',
+    anchorName: '果子妈妈',
+    avatarColor: 'linear-gradient(135deg,#4dd0a3,#2da37a)',
+    platform: '快手',
+    roomTitle: '宝宝辅食午间场',
+    date: '2026-09-22',
+    startTime: '12:30',
+    duration: '01:45:20',
+    fileSize: '856 MB',
+    violationCount: 0,
+    status: 'ready',
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4'
+  },
+  {
+    id: 'R2026092101',
+    anchorId: 'H001',
+    anchorName: '潮品日报',
+    avatarColor: 'linear-gradient(135deg,#60a5fa,#3b5bac)',
+    platform: '抖音',
+    roomTitle: '限量手办首发',
+    date: '2026-09-21',
+    startTime: '20:00',
+    duration: '02:30:12',
+    fileSize: '1.6 GB',
+    violationCount: 5,
+    status: 'ready',
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+  },
+  {
+    id: 'R2026092102',
+    anchorId: 'H002',
+    anchorName: '美妆测评官',
+    avatarColor: 'linear-gradient(135deg,#f472b6,#a855f7)',
+    platform: '淘宝直播',
+    roomTitle: '大牌精华液对比评测',
+    date: '2026-09-21',
+    startTime: '21:00',
+    duration: '03:02:48',
+    fileSize: '2.1 GB',
+    violationCount: 8,
+    status: 'ready',
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'
+  },
+  {
+    id: 'R2026092001',
+    anchorId: 'H003',
+    anchorName: '家电老李',
+    avatarColor: 'linear-gradient(135deg,#34d399,#059669)',
+    platform: '快手',
+    roomTitle: '厨房家电专场',
+    date: '2026-09-20',
+    startTime: '20:30',
+    duration: '02:50:03',
+    fileSize: '1.9 GB',
+    violationCount: 2,
+    status: 'ready',
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4'
+  },
+  {
+    id: 'R2026092002',
+    anchorId: 'H004',
+    anchorName: '保健品课堂',
+    avatarColor: 'linear-gradient(135deg,#fb7185,#dc2626)',
+    platform: '抖音',
+    roomTitle: '秋季养生科普',
+    date: '2026-09-20',
+    startTime: '19:00',
+    duration: '02:12:55',
+    fileSize: '1.4 GB',
+    violationCount: 11,
+    status: 'ready',
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4'
+  },
+  {
+    id: 'R2026091901',
+    anchorId: 'H002',
+    anchorName: '美妆测评官',
+    avatarColor: 'linear-gradient(135deg,#f472b6,#a855f7)',
+    platform: '淘宝直播',
+    roomTitle: '秋冬面霜测评夜场',
+    date: '2026-09-19',
+    startTime: '20:15',
+    duration: '02:40:10',
+    fileSize: '1.7 GB',
+    violationCount: 3,
+    status: 'ready',
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4'
+  },
+  {
+    id: 'R2026091902',
+    anchorId: 'H001',
+    anchorName: '潮品日报',
+    avatarColor: 'linear-gradient(135deg,#60a5fa,#3b5bac)',
+    platform: '抖音',
+    roomTitle: '潮玩盲盒拆箱',
+    date: '2026-09-19',
+    startTime: '14:00',
+    duration: '01:58:36',
+    fileSize: '920 MB',
+    violationCount: 1,
+    status: 'ready',
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4'
+  }
 ]
 
 /** 监测页 - 某主播直播间产品 */
